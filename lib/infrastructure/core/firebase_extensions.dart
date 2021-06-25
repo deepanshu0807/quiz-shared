@@ -26,4 +26,12 @@ extension FirestoreX on FirebaseFirestore {
   Future<CollectionReference> users() async {
     return FirebaseFirestore.instance.collection('USERS');
   }
+
+  Future<CollectionReference> courses() async {
+    return FirebaseFirestore.instance.collection('COURSE');
+  }
+
+  Future<CollectionReference> quiz() async {
+    return FirebaseFirestore.instance.collection('QUIZ');
+  }
 }

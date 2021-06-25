@@ -11,7 +11,6 @@ abstract class Course with _$Course {
   const factory Course({
     @required UniqueId id,
     @required String name,
-    @required Quiz quiz,
     @required QuizUser addedBy,
   }) = _Course;
 }

@@ -15,7 +15,6 @@ abstract class CourseDtos with _$CourseDtos {
     @required String id,
     @required String name,
     @required @QuizUserDtosConverter() QuizUserDtos addedBy,
-    @required @QuizDtosConverter() QuizDtos quiz,
   }) = _CourseDtos;
 
   factory CourseDtos.fromDomain(Course course) {
@@ -23,7 +22,6 @@ abstract class CourseDtos with _$CourseDtos {
       id: course.id.getOrCrash(),
       name: course.name,
       addedBy: QuizUserDtos.fromDomain(course.addedBy),
-      quiz: QuizDtos.fromDomain(course.quiz),
     );
   }
 
@@ -50,7 +48,6 @@ extension CourseDtosX on CourseDtos {
       id: UniqueId.fromUniqueString(this.id ?? ""),
       name: name,
       addedBy: addedBy.toDomain(),
-      quiz: quiz.toDomain(),
     );
   }
 }

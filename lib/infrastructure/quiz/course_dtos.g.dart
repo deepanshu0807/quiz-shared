@@ -12,8 +12,6 @@ _$_CourseDtos _$_$_CourseDtosFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     addedBy: const QuizUserDtosConverter()
         .fromJson(json['addedBy'] as Map<String, dynamic>),
-    quiz: const QuizDtosConverter()
-        .fromJson(json['quiz'] as Map<String, dynamic>),
   );
 }
 
@@ -22,5 +20,4 @@ Map<String, dynamic> _$_$_CourseDtosToJson(_$_CourseDtos instance) =>
       'id': instance.id,
       'name': instance.name,
       'addedBy': const QuizUserDtosConverter().toJson(instance.addedBy),
-      'quiz': const QuizDtosConverter().toJson(instance.quiz),
     };
