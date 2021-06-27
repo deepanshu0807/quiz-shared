@@ -48,6 +48,7 @@ class FirebaseAuthService implements IAuth {
       return const Right(unit);
     } on PlatformException catch (e) {
       debugPrint("PlatformException $e ::${e.code}:::[$e]");
+
       switch (e.code) {
         case "ERROR_USER_NOT_FOUND":
           return const Left(AuthFailure.userNotFound());
@@ -80,11 +81,26 @@ class FirebaseAuthService implements IAuth {
       } else {
         return const Left(AuthFailure.userNotFound());
       }
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint("PlatformException $emailStr $e");
       switch (e.code) {
         case "ERROR_USER_NOT_FOUND":
           return const Left(AuthFailure.userNotFound());
+          break;
+        case "ERROR_WRONG_PASSWORD":
+          return const Left(AuthFailure.invalidEmailOrPasswordValue());
+          break;
+        case "ERROR_INVALID_CREDENTIAL":
+          return const Left(AuthFailure.invalidCredential());
+          break;
+        case "ERROR_USER_MISMATCH":
+          return const Left(AuthFailure.invalidCredential());
+          break;
+        case "ERROR_EMAIL_ALREADY_IN_USE":
+          return const Left(AuthFailure.emailAlreadyExist());
+          break;
+        case "ERROR_CREDENTIAL_ALREADY_IN_USE":
+          return const Left(AuthFailure.emailAlreadyExist());
           break;
         case "ERROR_INVALID_EMAIL":
           return const Left(AuthFailure.invalidEmail());
@@ -130,12 +146,27 @@ class FirebaseAuthService implements IAuth {
       } else {
         return const Left(AuthFailure.accountExistWithDifferentCredential());
       }
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint("PlatformException $emailStr $e");
 
       switch (e.code) {
         case "ERROR_USER_NOT_FOUND":
           return const Left(AuthFailure.userNotFound());
+          break;
+        case "ERROR_WRONG_PASSWORD":
+          return const Left(AuthFailure.invalidEmailOrPasswordValue());
+          break;
+        case "ERROR_INVALID_CREDENTIAL":
+          return const Left(AuthFailure.invalidCredential());
+          break;
+        case "ERROR_USER_MISMATCH":
+          return const Left(AuthFailure.invalidCredential());
+          break;
+        case "ERROR_EMAIL_ALREADY_IN_USE":
+          return const Left(AuthFailure.emailAlreadyExist());
+          break;
+        case "ERROR_CREDENTIAL_ALREADY_IN_USE":
+          return const Left(AuthFailure.emailAlreadyExist());
           break;
         case "ERROR_INVALID_EMAIL":
           return const Left(AuthFailure.invalidEmail());
