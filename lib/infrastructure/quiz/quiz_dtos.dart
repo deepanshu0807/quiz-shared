@@ -18,6 +18,7 @@ abstract class QuizDtos with _$QuizDtos {
     @required @QuestionDtosConverter() List<QuestionDtos> questions,
     @required int totalPoints,
     @required int passingPoints,
+    @required int minutes,
   }) = _QuizDtos;
 
   factory QuizDtos.fromDomain(Quiz quiz) {
@@ -25,6 +26,7 @@ abstract class QuizDtos with _$QuizDtos {
       id: quiz.id.getOrCrash(),
       topic: quiz.topic,
       totalPoints: quiz.totalPoints,
+      minutes: quiz.minutes,
       passingPoints: quiz.passPoints,
       course: CourseDtos.fromDomain(quiz.course),
       questions:
@@ -54,6 +56,7 @@ extension QuizDtosX on QuizDtos {
     return Quiz(
       id: UniqueId.fromUniqueString(this.id ?? ""),
       topic: topic,
+      minutes: minutes,
       course: course.toDomain(),
       totalPoints: totalPoints,
       passPoints: passingPoints,

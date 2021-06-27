@@ -8,13 +8,12 @@ part 'question.freezed.dart';
 @freezed
 abstract class Question with _$Question {
   const factory Question({
-    @required UniqueId id,
     @required String question,
     @required String optionA,
     @required String optionB,
     @required String optionC,
     @required String optionD,
-    @required List<String> answer,
+    @required String answer,
     @required int points,
   }) = _Question;
 }

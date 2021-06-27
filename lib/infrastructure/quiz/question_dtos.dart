@@ -10,19 +10,17 @@ part 'question_dtos.g.dart';
 @freezed
 abstract class QuestionDtos with _$QuestionDtos {
   factory QuestionDtos({
-    @required String id,
     @required String question,
     @required String optionA,
     @required String optionB,
     @required String optionC,
     @required String optionD,
     @required int points,
-    @required List<String> answer,
+    @required String answer,
   }) = _QuestionDtos;
 
   factory QuestionDtos.fromDomain(Question ques) {
     return QuestionDtos(
-      id: ques.id.getOrCrash(),
       question: ques.question,
       optionA: ques.optionA,
       optionB: ques.optionB,
@@ -53,7 +51,6 @@ class QuestionDtosConverter
 extension QuestionDtosX on QuestionDtos {
   Question toDomain() {
     return Question(
-      id: UniqueId.fromUniqueString(this.id ?? ""),
       question: question,
       optionA: optionA,
       optionB: optionB,

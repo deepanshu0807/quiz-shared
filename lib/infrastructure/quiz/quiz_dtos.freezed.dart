@@ -23,7 +23,8 @@ class _$QuizDtosTearOff {
       @required @CourseDtosConverter() CourseDtos course,
       @required @QuestionDtosConverter() List<QuestionDtos> questions,
       @required int totalPoints,
-      @required int passingPoints}) {
+      @required int passingPoints,
+      @required int minutes}) {
     return _QuizDtos(
       id: id,
       topic: topic,
@@ -31,6 +32,7 @@ class _$QuizDtosTearOff {
       questions: questions,
       totalPoints: totalPoints,
       passingPoints: passingPoints,
+      minutes: minutes,
     );
   }
 
@@ -54,6 +56,7 @@ mixin _$QuizDtos {
   List<QuestionDtos> get questions;
   int get totalPoints;
   int get passingPoints;
+  int get minutes;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -70,7 +73,8 @@ abstract class $QuizDtosCopyWith<$Res> {
       @CourseDtosConverter() CourseDtos course,
       @QuestionDtosConverter() List<QuestionDtos> questions,
       int totalPoints,
-      int passingPoints});
+      int passingPoints,
+      int minutes});
 
   $CourseDtosCopyWith<$Res> get course;
 }
@@ -91,6 +95,7 @@ class _$QuizDtosCopyWithImpl<$Res> implements $QuizDtosCopyWith<$Res> {
     Object questions = freezed,
     Object totalPoints = freezed,
     Object passingPoints = freezed,
+    Object minutes = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -104,6 +109,7 @@ class _$QuizDtosCopyWithImpl<$Res> implements $QuizDtosCopyWith<$Res> {
       passingPoints: passingPoints == freezed
           ? _value.passingPoints
           : passingPoints as int,
+      minutes: minutes == freezed ? _value.minutes : minutes as int,
     ));
   }
 
@@ -129,7 +135,8 @@ abstract class _$QuizDtosCopyWith<$Res> implements $QuizDtosCopyWith<$Res> {
       @CourseDtosConverter() CourseDtos course,
       @QuestionDtosConverter() List<QuestionDtos> questions,
       int totalPoints,
-      int passingPoints});
+      int passingPoints,
+      int minutes});
 
   @override
   $CourseDtosCopyWith<$Res> get course;
@@ -152,6 +159,7 @@ class __$QuizDtosCopyWithImpl<$Res> extends _$QuizDtosCopyWithImpl<$Res>
     Object questions = freezed,
     Object totalPoints = freezed,
     Object passingPoints = freezed,
+    Object minutes = freezed,
   }) {
     return _then(_QuizDtos(
       id: id == freezed ? _value.id : id as String,
@@ -165,6 +173,7 @@ class __$QuizDtosCopyWithImpl<$Res> extends _$QuizDtosCopyWithImpl<$Res>
       passingPoints: passingPoints == freezed
           ? _value.passingPoints
           : passingPoints as int,
+      minutes: minutes == freezed ? _value.minutes : minutes as int,
     ));
   }
 }
@@ -179,13 +188,15 @@ class _$_QuizDtos with DiagnosticableTreeMixin implements _QuizDtos {
       @required @CourseDtosConverter() this.course,
       @required @QuestionDtosConverter() this.questions,
       @required this.totalPoints,
-      @required this.passingPoints})
+      @required this.passingPoints,
+      @required this.minutes})
       : assert(id != null),
         assert(topic != null),
         assert(course != null),
         assert(questions != null),
         assert(totalPoints != null),
-        assert(passingPoints != null);
+        assert(passingPoints != null),
+        assert(minutes != null);
 
   factory _$_QuizDtos.fromJson(Map<String, dynamic> json) =>
       _$_$_QuizDtosFromJson(json);
@@ -204,10 +215,12 @@ class _$_QuizDtos with DiagnosticableTreeMixin implements _QuizDtos {
   final int totalPoints;
   @override
   final int passingPoints;
+  @override
+  final int minutes;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuizDtos(id: $id, topic: $topic, course: $course, questions: $questions, totalPoints: $totalPoints, passingPoints: $passingPoints)';
+    return 'QuizDtos(id: $id, topic: $topic, course: $course, questions: $questions, totalPoints: $totalPoints, passingPoints: $passingPoints, minutes: $minutes)';
   }
 
   @override
@@ -220,7 +233,8 @@ class _$_QuizDtos with DiagnosticableTreeMixin implements _QuizDtos {
       ..add(DiagnosticsProperty('course', course))
       ..add(DiagnosticsProperty('questions', questions))
       ..add(DiagnosticsProperty('totalPoints', totalPoints))
-      ..add(DiagnosticsProperty('passingPoints', passingPoints));
+      ..add(DiagnosticsProperty('passingPoints', passingPoints))
+      ..add(DiagnosticsProperty('minutes', minutes));
   }
 
   @override
@@ -241,7 +255,9 @@ class _$_QuizDtos with DiagnosticableTreeMixin implements _QuizDtos {
                     .equals(other.totalPoints, totalPoints)) &&
             (identical(other.passingPoints, passingPoints) ||
                 const DeepCollectionEquality()
-                    .equals(other.passingPoints, passingPoints)));
+                    .equals(other.passingPoints, passingPoints)) &&
+            (identical(other.minutes, minutes) ||
+                const DeepCollectionEquality().equals(other.minutes, minutes)));
   }
 
   @override
@@ -252,7 +268,8 @@ class _$_QuizDtos with DiagnosticableTreeMixin implements _QuizDtos {
       const DeepCollectionEquality().hash(course) ^
       const DeepCollectionEquality().hash(questions) ^
       const DeepCollectionEquality().hash(totalPoints) ^
-      const DeepCollectionEquality().hash(passingPoints);
+      const DeepCollectionEquality().hash(passingPoints) ^
+      const DeepCollectionEquality().hash(minutes);
 
   @JsonKey(ignore: true)
   @override
@@ -272,7 +289,8 @@ abstract class _QuizDtos implements QuizDtos {
       @required @CourseDtosConverter() CourseDtos course,
       @required @QuestionDtosConverter() List<QuestionDtos> questions,
       @required int totalPoints,
-      @required int passingPoints}) = _$_QuizDtos;
+      @required int passingPoints,
+      @required int minutes}) = _$_QuizDtos;
 
   factory _QuizDtos.fromJson(Map<String, dynamic> json) = _$_QuizDtos.fromJson;
 
@@ -290,6 +308,8 @@ abstract class _QuizDtos implements QuizDtos {
   int get totalPoints;
   @override
   int get passingPoints;
+  @override
+  int get minutes;
   @override
   @JsonKey(ignore: true)
   _$QuizDtosCopyWith<_QuizDtos> get copyWith;

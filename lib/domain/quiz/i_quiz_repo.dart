@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:quiz_shared/domain/quiz/course.dart';
 import 'package:quiz_shared/domain/quiz/quiz.dart';
+import 'package:quiz_shared/domain/quiz/submission.dart';
 import 'package:quiz_shared/domain/user/user.dart';
 import 'package:quiz_shared/quiz_shared.dart';
 
@@ -16,4 +17,8 @@ abstract class IQuizRepo {
   Stream<Either<InfraFailure, List<Quiz>>> getAllQuiz();
   Future<Either<InfraFailure, Unit>> createQuiz(Quiz quiz);
   Future<Either<InfraFailure, Unit>> deleteQuiz(Quiz quiz);
+
+  //Submission
+  Future<Either<InfraFailure, Unit>> createSubmission(Submission submission);
+  Stream<Either<InfraFailure, List<Submission>>> getSubmissions();
 }

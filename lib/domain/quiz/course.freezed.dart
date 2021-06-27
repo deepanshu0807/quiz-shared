@@ -17,11 +17,13 @@ class _$CourseTearOff {
   _Course call(
       {@required UniqueId id,
       @required String name,
-      @required QuizUser addedBy}) {
+      @required String addedBy,
+      bool hasQuiz}) {
     return _Course(
       id: id,
       name: name,
       addedBy: addedBy,
+      hasQuiz: hasQuiz,
     );
   }
 }
@@ -34,7 +36,8 @@ const $Course = _$CourseTearOff();
 mixin _$Course {
   UniqueId get id;
   String get name;
-  QuizUser get addedBy;
+  String get addedBy;
+  bool get hasQuiz;
 
   @JsonKey(ignore: true)
   $CourseCopyWith<Course> get copyWith;
@@ -44,9 +47,7 @@ mixin _$Course {
 abstract class $CourseCopyWith<$Res> {
   factory $CourseCopyWith(Course value, $Res Function(Course) then) =
       _$CourseCopyWithImpl<$Res>;
-  $Res call({UniqueId id, String name, QuizUser addedBy});
-
-  $QuizUserCopyWith<$Res> get addedBy;
+  $Res call({UniqueId id, String name, String addedBy, bool hasQuiz});
 }
 
 /// @nodoc
@@ -62,22 +63,14 @@ class _$CourseCopyWithImpl<$Res> implements $CourseCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object addedBy = freezed,
+    Object hasQuiz = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
       name: name == freezed ? _value.name : name as String,
-      addedBy: addedBy == freezed ? _value.addedBy : addedBy as QuizUser,
+      addedBy: addedBy == freezed ? _value.addedBy : addedBy as String,
+      hasQuiz: hasQuiz == freezed ? _value.hasQuiz : hasQuiz as bool,
     ));
-  }
-
-  @override
-  $QuizUserCopyWith<$Res> get addedBy {
-    if (_value.addedBy == null) {
-      return null;
-    }
-    return $QuizUserCopyWith<$Res>(_value.addedBy, (value) {
-      return _then(_value.copyWith(addedBy: value));
-    });
   }
 }
 
@@ -86,10 +79,7 @@ abstract class _$CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
   factory _$CourseCopyWith(_Course value, $Res Function(_Course) then) =
       __$CourseCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, String name, QuizUser addedBy});
-
-  @override
-  $QuizUserCopyWith<$Res> get addedBy;
+  $Res call({UniqueId id, String name, String addedBy, bool hasQuiz});
 }
 
 /// @nodoc
@@ -106,11 +96,13 @@ class __$CourseCopyWithImpl<$Res> extends _$CourseCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object addedBy = freezed,
+    Object hasQuiz = freezed,
   }) {
     return _then(_Course(
       id: id == freezed ? _value.id : id as UniqueId,
       name: name == freezed ? _value.name : name as String,
-      addedBy: addedBy == freezed ? _value.addedBy : addedBy as QuizUser,
+      addedBy: addedBy == freezed ? _value.addedBy : addedBy as String,
+      hasQuiz: hasQuiz == freezed ? _value.hasQuiz : hasQuiz as bool,
     ));
   }
 }
@@ -118,7 +110,10 @@ class __$CourseCopyWithImpl<$Res> extends _$CourseCopyWithImpl<$Res>
 /// @nodoc
 class _$_Course with DiagnosticableTreeMixin implements _Course {
   const _$_Course(
-      {@required this.id, @required this.name, @required this.addedBy})
+      {@required this.id,
+      @required this.name,
+      @required this.addedBy,
+      this.hasQuiz})
       : assert(id != null),
         assert(name != null),
         assert(addedBy != null);
@@ -128,11 +123,13 @@ class _$_Course with DiagnosticableTreeMixin implements _Course {
   @override
   final String name;
   @override
-  final QuizUser addedBy;
+  final String addedBy;
+  @override
+  final bool hasQuiz;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Course(id: $id, name: $name, addedBy: $addedBy)';
+    return 'Course(id: $id, name: $name, addedBy: $addedBy, hasQuiz: $hasQuiz)';
   }
 
   @override
@@ -142,7 +139,8 @@ class _$_Course with DiagnosticableTreeMixin implements _Course {
       ..add(DiagnosticsProperty('type', 'Course'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('addedBy', addedBy));
+      ..add(DiagnosticsProperty('addedBy', addedBy))
+      ..add(DiagnosticsProperty('hasQuiz', hasQuiz));
   }
 
   @override
@@ -154,7 +152,10 @@ class _$_Course with DiagnosticableTreeMixin implements _Course {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.addedBy, addedBy) ||
-                const DeepCollectionEquality().equals(other.addedBy, addedBy)));
+                const DeepCollectionEquality()
+                    .equals(other.addedBy, addedBy)) &&
+            (identical(other.hasQuiz, hasQuiz) ||
+                const DeepCollectionEquality().equals(other.hasQuiz, hasQuiz)));
   }
 
   @override
@@ -162,7 +163,8 @@ class _$_Course with DiagnosticableTreeMixin implements _Course {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(addedBy);
+      const DeepCollectionEquality().hash(addedBy) ^
+      const DeepCollectionEquality().hash(hasQuiz);
 
   @JsonKey(ignore: true)
   @override
@@ -174,14 +176,17 @@ abstract class _Course implements Course {
   const factory _Course(
       {@required UniqueId id,
       @required String name,
-      @required QuizUser addedBy}) = _$_Course;
+      @required String addedBy,
+      bool hasQuiz}) = _$_Course;
 
   @override
   UniqueId get id;
   @override
   String get name;
   @override
-  QuizUser get addedBy;
+  String get addedBy;
+  @override
+  bool get hasQuiz;
   @override
   @JsonKey(ignore: true)
   _$CourseCopyWith<_Course> get copyWith;

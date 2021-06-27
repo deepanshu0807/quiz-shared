@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:quiz_shared/domain/quiz/course.dart';
 import 'package:quiz_shared/domain/quiz/i_quiz_repo.dart';
 import 'package:quiz_shared/domain/quiz/quiz.dart';
+import 'package:quiz_shared/domain/quiz/submission.dart';
 import 'package:quiz_shared/domain/user/user.dart';
 import 'package:quiz_shared/infrastructure/quiz/course_dtos.dart';
 import 'package:quiz_shared/infrastructure/quiz/quiz_dtos.dart';
+import 'package:quiz_shared/infrastructure/quiz/submission_dtos.dart';
 
 import '../../quiz_shared.dart';
 
@@ -23,6 +25,8 @@ class QuizRepo implements IQuizRepo {
       final cDto = CourseDtos.fromDomain(course);
 
       final json = cDto.toJson();
+
+      print(json);
       await cRef.doc(cDto.id).set(json, SetOptions(merge: true));
       return right(unit);
     } catch (e) {
@@ -140,5 +144,41 @@ class QuizRepo implements IQuizRepo {
       debugPrint("Unexpected Error $e");
       return left(const InfraFailure.serverError());
     }
+  }
+
+  //Submission
+
+  @override
+  Future<Either<InfraFailure, Unit>> createSubmission(
+      Submission submission) async {
+    try {
+      final cRef = await _firestore.submissions();
+      final cDto = SubmissionDtos.fromDomain(submission);
+
+      final json = cDto.toJson();
+
+      print(json);
+      await cRef.doc(cDto.id).set(json, SetOptions(merge: true));
+      return right(unit);
+    } catch (e) {
+      debugPrint("Unexpected Error $e");
+      return left(const InfraFailure.serverError());
+    }
+  }
+
+  @override
+  Stream<Either<InfraFailure, List<Submission>>> getSubmissions() async* {
+    final c = await _firestore.submissions();
+    yield* c
+        .snapshots()
+        .map(
+          (snapshot) => right<InfraFailure, List<Submission>>(snapshot.docs
+              .map((doc) => SubmissionDtos.fromJson(doc.data()).toDomain())
+              .toList()),
+        )
+        .onErrorReturnWith((e) {
+      debugPrint("Unexpected Error $e");
+      return left(const InfraFailure.serverError());
+    });
   }
 }

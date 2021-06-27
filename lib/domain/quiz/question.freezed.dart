@@ -15,16 +15,14 @@ class _$QuestionTearOff {
 
 // ignore: unused_element
   _Question call(
-      {@required UniqueId id,
-      @required String question,
+      {@required String question,
       @required String optionA,
       @required String optionB,
       @required String optionC,
       @required String optionD,
-      @required List<String> answer,
+      @required String answer,
       @required int points}) {
     return _Question(
-      id: id,
       question: question,
       optionA: optionA,
       optionB: optionB,
@@ -42,13 +40,12 @@ const $Question = _$QuestionTearOff();
 
 /// @nodoc
 mixin _$Question {
-  UniqueId get id;
   String get question;
   String get optionA;
   String get optionB;
   String get optionC;
   String get optionD;
-  List<String> get answer;
+  String get answer;
   int get points;
 
   @JsonKey(ignore: true)
@@ -60,13 +57,12 @@ abstract class $QuestionCopyWith<$Res> {
   factory $QuestionCopyWith(Question value, $Res Function(Question) then) =
       _$QuestionCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id,
-      String question,
+      {String question,
       String optionA,
       String optionB,
       String optionC,
       String optionD,
-      List<String> answer,
+      String answer,
       int points});
 }
 
@@ -80,7 +76,6 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object question = freezed,
     Object optionA = freezed,
     Object optionB = freezed,
@@ -90,13 +85,12 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
     Object points = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as UniqueId,
       question: question == freezed ? _value.question : question as String,
       optionA: optionA == freezed ? _value.optionA : optionA as String,
       optionB: optionB == freezed ? _value.optionB : optionB as String,
       optionC: optionC == freezed ? _value.optionC : optionC as String,
       optionD: optionD == freezed ? _value.optionD : optionD as String,
-      answer: answer == freezed ? _value.answer : answer as List<String>,
+      answer: answer == freezed ? _value.answer : answer as String,
       points: points == freezed ? _value.points : points as int,
     ));
   }
@@ -108,13 +102,12 @@ abstract class _$QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
       __$QuestionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id,
-      String question,
+      {String question,
       String optionA,
       String optionB,
       String optionC,
       String optionD,
-      List<String> answer,
+      String answer,
       int points});
 }
 
@@ -129,7 +122,6 @@ class __$QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object question = freezed,
     Object optionA = freezed,
     Object optionB = freezed,
@@ -139,13 +131,12 @@ class __$QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
     Object points = freezed,
   }) {
     return _then(_Question(
-      id: id == freezed ? _value.id : id as UniqueId,
       question: question == freezed ? _value.question : question as String,
       optionA: optionA == freezed ? _value.optionA : optionA as String,
       optionB: optionB == freezed ? _value.optionB : optionB as String,
       optionC: optionC == freezed ? _value.optionC : optionC as String,
       optionD: optionD == freezed ? _value.optionD : optionD as String,
-      answer: answer == freezed ? _value.answer : answer as List<String>,
+      answer: answer == freezed ? _value.answer : answer as String,
       points: points == freezed ? _value.points : points as int,
     ));
   }
@@ -154,16 +145,14 @@ class __$QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
 /// @nodoc
 class _$_Question with DiagnosticableTreeMixin implements _Question {
   const _$_Question(
-      {@required this.id,
-      @required this.question,
+      {@required this.question,
       @required this.optionA,
       @required this.optionB,
       @required this.optionC,
       @required this.optionD,
       @required this.answer,
       @required this.points})
-      : assert(id != null),
-        assert(question != null),
+      : assert(question != null),
         assert(optionA != null),
         assert(optionB != null),
         assert(optionC != null),
@@ -171,8 +160,6 @@ class _$_Question with DiagnosticableTreeMixin implements _Question {
         assert(answer != null),
         assert(points != null);
 
-  @override
-  final UniqueId id;
   @override
   final String question;
   @override
@@ -184,13 +171,13 @@ class _$_Question with DiagnosticableTreeMixin implements _Question {
   @override
   final String optionD;
   @override
-  final List<String> answer;
+  final String answer;
   @override
   final int points;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Question(id: $id, question: $question, optionA: $optionA, optionB: $optionB, optionC: $optionC, optionD: $optionD, answer: $answer, points: $points)';
+    return 'Question(question: $question, optionA: $optionA, optionB: $optionB, optionC: $optionC, optionD: $optionD, answer: $answer, points: $points)';
   }
 
   @override
@@ -198,7 +185,6 @@ class _$_Question with DiagnosticableTreeMixin implements _Question {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Question'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('question', question))
       ..add(DiagnosticsProperty('optionA', optionA))
       ..add(DiagnosticsProperty('optionB', optionB))
@@ -212,8 +198,6 @@ class _$_Question with DiagnosticableTreeMixin implements _Question {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Question &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.question, question) ||
                 const DeepCollectionEquality()
                     .equals(other.question, question)) &&
@@ -238,7 +222,6 @@ class _$_Question with DiagnosticableTreeMixin implements _Question {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(question) ^
       const DeepCollectionEquality().hash(optionA) ^
       const DeepCollectionEquality().hash(optionB) ^
@@ -255,17 +238,14 @@ class _$_Question with DiagnosticableTreeMixin implements _Question {
 
 abstract class _Question implements Question {
   const factory _Question(
-      {@required UniqueId id,
-      @required String question,
+      {@required String question,
       @required String optionA,
       @required String optionB,
       @required String optionC,
       @required String optionD,
-      @required List<String> answer,
+      @required String answer,
       @required int points}) = _$_Question;
 
-  @override
-  UniqueId get id;
   @override
   String get question;
   @override
@@ -277,7 +257,7 @@ abstract class _Question implements Question {
   @override
   String get optionD;
   @override
-  List<String> get answer;
+  String get answer;
   @override
   int get points;
   @override

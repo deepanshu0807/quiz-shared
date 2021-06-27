@@ -14,14 +14,16 @@ abstract class CourseDtos with _$CourseDtos {
   factory CourseDtos({
     @required String id,
     @required String name,
-    @required @QuizUserDtosConverter() QuizUserDtos addedBy,
+    @required String addedBy,
+    bool hasQuiz,
   }) = _CourseDtos;
 
   factory CourseDtos.fromDomain(Course course) {
     return CourseDtos(
       id: course.id.getOrCrash(),
       name: course.name,
-      addedBy: QuizUserDtos.fromDomain(course.addedBy),
+      addedBy: course.addedBy,
+      hasQuiz: course.hasQuiz,
     );
   }
 
@@ -47,7 +49,8 @@ extension CourseDtosX on CourseDtos {
     return Course(
       id: UniqueId.fromUniqueString(this.id ?? ""),
       name: name,
-      addedBy: addedBy.toDomain(),
+      addedBy: addedBy,
+      hasQuiz: hasQuiz ?? false,
     );
   }
 }

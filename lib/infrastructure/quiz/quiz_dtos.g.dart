@@ -18,6 +18,7 @@ _$_QuizDtos _$_$_QuizDtosFromJson(Map<String, dynamic> json) {
         ?.toList(),
     totalPoints: json['totalPoints'] as int,
     passingPoints: json['passingPoints'] as int,
+    minutes: json['minutes'] as int,
   );
 }
 
@@ -31,4 +32,5 @@ Map<String, dynamic> _$_$_QuizDtosToJson(_$_QuizDtos instance) =>
           ?.toList(),
       'totalPoints': instance.totalPoints,
       'passingPoints': instance.passingPoints,
+      'minutes': instance.minutes,
     };

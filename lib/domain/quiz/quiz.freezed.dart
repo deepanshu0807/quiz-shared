@@ -20,7 +20,8 @@ class _$QuizTearOff {
       @required Course course,
       @required List<Question> questions,
       @required int totalPoints,
-      @required int passPoints}) {
+      @required int passPoints,
+      @required int minutes}) {
     return _Quiz(
       id: id,
       topic: topic,
@@ -28,6 +29,7 @@ class _$QuizTearOff {
       questions: questions,
       totalPoints: totalPoints,
       passPoints: passPoints,
+      minutes: minutes,
     );
   }
 }
@@ -44,6 +46,7 @@ mixin _$Quiz {
   List<Question> get questions;
   int get totalPoints;
   int get passPoints;
+  int get minutes;
 
   @JsonKey(ignore: true)
   $QuizCopyWith<Quiz> get copyWith;
@@ -59,7 +62,8 @@ abstract class $QuizCopyWith<$Res> {
       Course course,
       List<Question> questions,
       int totalPoints,
-      int passPoints});
+      int passPoints,
+      int minutes});
 
   $CourseCopyWith<$Res> get course;
 }
@@ -80,6 +84,7 @@ class _$QuizCopyWithImpl<$Res> implements $QuizCopyWith<$Res> {
     Object questions = freezed,
     Object totalPoints = freezed,
     Object passPoints = freezed,
+    Object minutes = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -90,6 +95,7 @@ class _$QuizCopyWithImpl<$Res> implements $QuizCopyWith<$Res> {
       totalPoints:
           totalPoints == freezed ? _value.totalPoints : totalPoints as int,
       passPoints: passPoints == freezed ? _value.passPoints : passPoints as int,
+      minutes: minutes == freezed ? _value.minutes : minutes as int,
     ));
   }
 
@@ -115,7 +121,8 @@ abstract class _$QuizCopyWith<$Res> implements $QuizCopyWith<$Res> {
       Course course,
       List<Question> questions,
       int totalPoints,
-      int passPoints});
+      int passPoints,
+      int minutes});
 
   @override
   $CourseCopyWith<$Res> get course;
@@ -138,6 +145,7 @@ class __$QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res>
     Object questions = freezed,
     Object totalPoints = freezed,
     Object passPoints = freezed,
+    Object minutes = freezed,
   }) {
     return _then(_Quiz(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -148,6 +156,7 @@ class __$QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res>
       totalPoints:
           totalPoints == freezed ? _value.totalPoints : totalPoints as int,
       passPoints: passPoints == freezed ? _value.passPoints : passPoints as int,
+      minutes: minutes == freezed ? _value.minutes : minutes as int,
     ));
   }
 }
@@ -160,13 +169,15 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
       @required this.course,
       @required this.questions,
       @required this.totalPoints,
-      @required this.passPoints})
+      @required this.passPoints,
+      @required this.minutes})
       : assert(id != null),
         assert(topic != null),
         assert(course != null),
         assert(questions != null),
         assert(totalPoints != null),
-        assert(passPoints != null);
+        assert(passPoints != null),
+        assert(minutes != null);
 
   @override
   final UniqueId id;
@@ -180,10 +191,12 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
   final int totalPoints;
   @override
   final int passPoints;
+  @override
+  final int minutes;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Quiz(id: $id, topic: $topic, course: $course, questions: $questions, totalPoints: $totalPoints, passPoints: $passPoints)';
+    return 'Quiz(id: $id, topic: $topic, course: $course, questions: $questions, totalPoints: $totalPoints, passPoints: $passPoints, minutes: $minutes)';
   }
 
   @override
@@ -196,7 +209,8 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
       ..add(DiagnosticsProperty('course', course))
       ..add(DiagnosticsProperty('questions', questions))
       ..add(DiagnosticsProperty('totalPoints', totalPoints))
-      ..add(DiagnosticsProperty('passPoints', passPoints));
+      ..add(DiagnosticsProperty('passPoints', passPoints))
+      ..add(DiagnosticsProperty('minutes', minutes));
   }
 
   @override
@@ -217,7 +231,9 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
                     .equals(other.totalPoints, totalPoints)) &&
             (identical(other.passPoints, passPoints) ||
                 const DeepCollectionEquality()
-                    .equals(other.passPoints, passPoints)));
+                    .equals(other.passPoints, passPoints)) &&
+            (identical(other.minutes, minutes) ||
+                const DeepCollectionEquality().equals(other.minutes, minutes)));
   }
 
   @override
@@ -228,7 +244,8 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
       const DeepCollectionEquality().hash(course) ^
       const DeepCollectionEquality().hash(questions) ^
       const DeepCollectionEquality().hash(totalPoints) ^
-      const DeepCollectionEquality().hash(passPoints);
+      const DeepCollectionEquality().hash(passPoints) ^
+      const DeepCollectionEquality().hash(minutes);
 
   @JsonKey(ignore: true)
   @override
@@ -243,7 +260,8 @@ abstract class _Quiz implements Quiz {
       @required Course course,
       @required List<Question> questions,
       @required int totalPoints,
-      @required int passPoints}) = _$_Quiz;
+      @required int passPoints,
+      @required int minutes}) = _$_Quiz;
 
   @override
   UniqueId get id;
@@ -257,6 +275,8 @@ abstract class _Quiz implements Quiz {
   int get totalPoints;
   @override
   int get passPoints;
+  @override
+  int get minutes;
   @override
   @JsonKey(ignore: true)
   _$QuizCopyWith<_Quiz> get copyWith;

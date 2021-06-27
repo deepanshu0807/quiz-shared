@@ -16,5 +16,16 @@ abstract class Quiz with _$Quiz {
     @required List<Question> questions,
     @required int totalPoints,
     @required int passPoints,
+    @required int minutes,
   }) = _Quiz;
+
+  factory Quiz.initial() => Quiz(
+        id: UniqueId(),
+        topic: "",
+        totalPoints: 0,
+        passPoints: 0,
+        course: Course(id: UniqueId(), name: "", addedBy: ""),
+        questions: <Question>[],
+        minutes: 0,
+      );
 }

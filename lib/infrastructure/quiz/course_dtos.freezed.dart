@@ -20,11 +20,13 @@ class _$CourseDtosTearOff {
   _CourseDtos call(
       {@required String id,
       @required String name,
-      @required @QuizUserDtosConverter() QuizUserDtos addedBy}) {
+      @required String addedBy,
+      bool hasQuiz}) {
     return _CourseDtos(
       id: id,
       name: name,
       addedBy: addedBy,
+      hasQuiz: hasQuiz,
     );
   }
 
@@ -42,8 +44,8 @@ const $CourseDtos = _$CourseDtosTearOff();
 mixin _$CourseDtos {
   String get id;
   String get name;
-  @QuizUserDtosConverter()
-  QuizUserDtos get addedBy;
+  String get addedBy;
+  bool get hasQuiz;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -55,10 +57,7 @@ abstract class $CourseDtosCopyWith<$Res> {
   factory $CourseDtosCopyWith(
           CourseDtos value, $Res Function(CourseDtos) then) =
       _$CourseDtosCopyWithImpl<$Res>;
-  $Res call(
-      {String id, String name, @QuizUserDtosConverter() QuizUserDtos addedBy});
-
-  $QuizUserDtosCopyWith<$Res> get addedBy;
+  $Res call({String id, String name, String addedBy, bool hasQuiz});
 }
 
 /// @nodoc
@@ -74,22 +73,14 @@ class _$CourseDtosCopyWithImpl<$Res> implements $CourseDtosCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object addedBy = freezed,
+    Object hasQuiz = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
-      addedBy: addedBy == freezed ? _value.addedBy : addedBy as QuizUserDtos,
+      addedBy: addedBy == freezed ? _value.addedBy : addedBy as String,
+      hasQuiz: hasQuiz == freezed ? _value.hasQuiz : hasQuiz as bool,
     ));
-  }
-
-  @override
-  $QuizUserDtosCopyWith<$Res> get addedBy {
-    if (_value.addedBy == null) {
-      return null;
-    }
-    return $QuizUserDtosCopyWith<$Res>(_value.addedBy, (value) {
-      return _then(_value.copyWith(addedBy: value));
-    });
   }
 }
 
@@ -99,11 +90,7 @@ abstract class _$CourseDtosCopyWith<$Res> implements $CourseDtosCopyWith<$Res> {
           _CourseDtos value, $Res Function(_CourseDtos) then) =
       __$CourseDtosCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String id, String name, @QuizUserDtosConverter() QuizUserDtos addedBy});
-
-  @override
-  $QuizUserDtosCopyWith<$Res> get addedBy;
+  $Res call({String id, String name, String addedBy, bool hasQuiz});
 }
 
 /// @nodoc
@@ -121,11 +108,13 @@ class __$CourseDtosCopyWithImpl<$Res> extends _$CourseDtosCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object addedBy = freezed,
+    Object hasQuiz = freezed,
   }) {
     return _then(_CourseDtos(
       id: id == freezed ? _value.id : id as String,
       name: name == freezed ? _value.name : name as String,
-      addedBy: addedBy == freezed ? _value.addedBy : addedBy as QuizUserDtos,
+      addedBy: addedBy == freezed ? _value.addedBy : addedBy as String,
+      hasQuiz: hasQuiz == freezed ? _value.hasQuiz : hasQuiz as bool,
     ));
   }
 }
@@ -137,7 +126,8 @@ class _$_CourseDtos with DiagnosticableTreeMixin implements _CourseDtos {
   _$_CourseDtos(
       {@required this.id,
       @required this.name,
-      @required @QuizUserDtosConverter() this.addedBy})
+      @required this.addedBy,
+      this.hasQuiz})
       : assert(id != null),
         assert(name != null),
         assert(addedBy != null);
@@ -150,12 +140,13 @@ class _$_CourseDtos with DiagnosticableTreeMixin implements _CourseDtos {
   @override
   final String name;
   @override
-  @QuizUserDtosConverter()
-  final QuizUserDtos addedBy;
+  final String addedBy;
+  @override
+  final bool hasQuiz;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CourseDtos(id: $id, name: $name, addedBy: $addedBy)';
+    return 'CourseDtos(id: $id, name: $name, addedBy: $addedBy, hasQuiz: $hasQuiz)';
   }
 
   @override
@@ -165,7 +156,8 @@ class _$_CourseDtos with DiagnosticableTreeMixin implements _CourseDtos {
       ..add(DiagnosticsProperty('type', 'CourseDtos'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('addedBy', addedBy));
+      ..add(DiagnosticsProperty('addedBy', addedBy))
+      ..add(DiagnosticsProperty('hasQuiz', hasQuiz));
   }
 
   @override
@@ -177,7 +169,10 @@ class _$_CourseDtos with DiagnosticableTreeMixin implements _CourseDtos {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.addedBy, addedBy) ||
-                const DeepCollectionEquality().equals(other.addedBy, addedBy)));
+                const DeepCollectionEquality()
+                    .equals(other.addedBy, addedBy)) &&
+            (identical(other.hasQuiz, hasQuiz) ||
+                const DeepCollectionEquality().equals(other.hasQuiz, hasQuiz)));
   }
 
   @override
@@ -185,7 +180,8 @@ class _$_CourseDtos with DiagnosticableTreeMixin implements _CourseDtos {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(addedBy);
+      const DeepCollectionEquality().hash(addedBy) ^
+      const DeepCollectionEquality().hash(hasQuiz);
 
   @JsonKey(ignore: true)
   @override
@@ -202,7 +198,8 @@ abstract class _CourseDtos implements CourseDtos {
   factory _CourseDtos(
       {@required String id,
       @required String name,
-      @required @QuizUserDtosConverter() QuizUserDtos addedBy}) = _$_CourseDtos;
+      @required String addedBy,
+      bool hasQuiz}) = _$_CourseDtos;
 
   factory _CourseDtos.fromJson(Map<String, dynamic> json) =
       _$_CourseDtos.fromJson;
@@ -212,8 +209,9 @@ abstract class _CourseDtos implements CourseDtos {
   @override
   String get name;
   @override
-  @QuizUserDtosConverter()
-  QuizUserDtos get addedBy;
+  String get addedBy;
+  @override
+  bool get hasQuiz;
   @override
   @JsonKey(ignore: true)
   _$CourseDtosCopyWith<_CourseDtos> get copyWith;

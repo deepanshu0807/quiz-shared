@@ -18,16 +18,14 @@ class _$QuestionDtosTearOff {
 
 // ignore: unused_element
   _QuestionDtos call(
-      {@required String id,
-      @required String question,
+      {@required String question,
       @required String optionA,
       @required String optionB,
       @required String optionC,
       @required String optionD,
       @required int points,
-      @required List<String> answer}) {
+      @required String answer}) {
     return _QuestionDtos(
-      id: id,
       question: question,
       optionA: optionA,
       optionB: optionB,
@@ -50,14 +48,13 @@ const $QuestionDtos = _$QuestionDtosTearOff();
 
 /// @nodoc
 mixin _$QuestionDtos {
-  String get id;
   String get question;
   String get optionA;
   String get optionB;
   String get optionC;
   String get optionD;
   int get points;
-  List<String> get answer;
+  String get answer;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -70,14 +67,13 @@ abstract class $QuestionDtosCopyWith<$Res> {
           QuestionDtos value, $Res Function(QuestionDtos) then) =
       _$QuestionDtosCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String question,
+      {String question,
       String optionA,
       String optionB,
       String optionC,
       String optionD,
       int points,
-      List<String> answer});
+      String answer});
 }
 
 /// @nodoc
@@ -90,7 +86,6 @@ class _$QuestionDtosCopyWithImpl<$Res> implements $QuestionDtosCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object question = freezed,
     Object optionA = freezed,
     Object optionB = freezed,
@@ -100,14 +95,13 @@ class _$QuestionDtosCopyWithImpl<$Res> implements $QuestionDtosCopyWith<$Res> {
     Object answer = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
       question: question == freezed ? _value.question : question as String,
       optionA: optionA == freezed ? _value.optionA : optionA as String,
       optionB: optionB == freezed ? _value.optionB : optionB as String,
       optionC: optionC == freezed ? _value.optionC : optionC as String,
       optionD: optionD == freezed ? _value.optionD : optionD as String,
       points: points == freezed ? _value.points : points as int,
-      answer: answer == freezed ? _value.answer : answer as List<String>,
+      answer: answer == freezed ? _value.answer : answer as String,
     ));
   }
 }
@@ -120,14 +114,13 @@ abstract class _$QuestionDtosCopyWith<$Res>
       __$QuestionDtosCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String question,
+      {String question,
       String optionA,
       String optionB,
       String optionC,
       String optionD,
       int points,
-      List<String> answer});
+      String answer});
 }
 
 /// @nodoc
@@ -142,7 +135,6 @@ class __$QuestionDtosCopyWithImpl<$Res> extends _$QuestionDtosCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object question = freezed,
     Object optionA = freezed,
     Object optionB = freezed,
@@ -152,14 +144,13 @@ class __$QuestionDtosCopyWithImpl<$Res> extends _$QuestionDtosCopyWithImpl<$Res>
     Object answer = freezed,
   }) {
     return _then(_QuestionDtos(
-      id: id == freezed ? _value.id : id as String,
       question: question == freezed ? _value.question : question as String,
       optionA: optionA == freezed ? _value.optionA : optionA as String,
       optionB: optionB == freezed ? _value.optionB : optionB as String,
       optionC: optionC == freezed ? _value.optionC : optionC as String,
       optionD: optionD == freezed ? _value.optionD : optionD as String,
       points: points == freezed ? _value.points : points as int,
-      answer: answer == freezed ? _value.answer : answer as List<String>,
+      answer: answer == freezed ? _value.answer : answer as String,
     ));
   }
 }
@@ -169,16 +160,14 @@ class __$QuestionDtosCopyWithImpl<$Res> extends _$QuestionDtosCopyWithImpl<$Res>
 /// @nodoc
 class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
   _$_QuestionDtos(
-      {@required this.id,
-      @required this.question,
+      {@required this.question,
       @required this.optionA,
       @required this.optionB,
       @required this.optionC,
       @required this.optionD,
       @required this.points,
       @required this.answer})
-      : assert(id != null),
-        assert(question != null),
+      : assert(question != null),
         assert(optionA != null),
         assert(optionB != null),
         assert(optionC != null),
@@ -189,8 +178,6 @@ class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
   factory _$_QuestionDtos.fromJson(Map<String, dynamic> json) =>
       _$_$_QuestionDtosFromJson(json);
 
-  @override
-  final String id;
   @override
   final String question;
   @override
@@ -204,11 +191,11 @@ class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
   @override
   final int points;
   @override
-  final List<String> answer;
+  final String answer;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuestionDtos(id: $id, question: $question, optionA: $optionA, optionB: $optionB, optionC: $optionC, optionD: $optionD, points: $points, answer: $answer)';
+    return 'QuestionDtos(question: $question, optionA: $optionA, optionB: $optionB, optionC: $optionC, optionD: $optionD, points: $points, answer: $answer)';
   }
 
   @override
@@ -216,7 +203,6 @@ class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'QuestionDtos'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('question', question))
       ..add(DiagnosticsProperty('optionA', optionA))
       ..add(DiagnosticsProperty('optionB', optionB))
@@ -230,8 +216,6 @@ class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _QuestionDtos &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.question, question) ||
                 const DeepCollectionEquality()
                     .equals(other.question, question)) &&
@@ -256,7 +240,6 @@ class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(question) ^
       const DeepCollectionEquality().hash(optionA) ^
       const DeepCollectionEquality().hash(optionB) ^
@@ -278,20 +261,17 @@ class _$_QuestionDtos with DiagnosticableTreeMixin implements _QuestionDtos {
 
 abstract class _QuestionDtos implements QuestionDtos {
   factory _QuestionDtos(
-      {@required String id,
-      @required String question,
+      {@required String question,
       @required String optionA,
       @required String optionB,
       @required String optionC,
       @required String optionD,
       @required int points,
-      @required List<String> answer}) = _$_QuestionDtos;
+      @required String answer}) = _$_QuestionDtos;
 
   factory _QuestionDtos.fromJson(Map<String, dynamic> json) =
       _$_QuestionDtos.fromJson;
 
-  @override
-  String get id;
   @override
   String get question;
   @override
@@ -305,7 +285,7 @@ abstract class _QuestionDtos implements QuestionDtos {
   @override
   int get points;
   @override
-  List<String> get answer;
+  String get answer;
   @override
   @JsonKey(ignore: true)
   _$QuestionDtosCopyWith<_QuestionDtos> get copyWith;
